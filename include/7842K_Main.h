@@ -10,3 +10,5 @@ void coutTask(void*);
 
 void driverControlTask();
 void baseControlTask();
+
+QLength chassisWidth = 11.75_in;

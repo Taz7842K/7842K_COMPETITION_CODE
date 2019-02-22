@@ -4,8 +4,9 @@
 
 void baseControlTask()
 {
-  long joystickch2 = HIDMain.get_analog(ANALOG_RIGHT_Y) /127;
-  long joystickch4 = HIDMain.get_analog(ANALOG_LEFT_X) /127 * 0.75;
+  long joystickch2 = HIDMain.get_analog(ANALOG_RIGHT_Y) /127 * 12000;
+  long joystickch4 = HIDMain.get_analog(ANALOG_LEFT_X) /127 *12000;
 
-  skidBase.arcade(joystickch2,joystickch4);
+  leftChassis.moveVoltage(joystickch2 + joystickch4);
+  rightChassis.moveVoltage(joystickch2 - joystickch4);
 }

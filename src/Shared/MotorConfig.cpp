@@ -15,13 +15,11 @@ okapi::Motor m_lift(4);
 
 okapi::Motor m_catapult(6);
 
-float chassisWidth = 11.75;
-
 okapi::ChassisControllerPID skidBase = ChassisControllerFactory::create(
   leftChassis, rightChassis,
   IterativePosPIDController::Gains{0.0, 0.0, 0.0}, //distance PID
   IterativePosPIDController::Gains{0.0, 0.0, 0}, //Angle PID
   IterativePosPIDController::Gains{0.0, 0, 0}, //turning PID
   AbstractMotor::gearset::green,
-  {4_in, 11.75_in}
+  {4_in, chassisWidth}
 );
