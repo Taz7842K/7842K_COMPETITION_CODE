@@ -4,7 +4,9 @@
 //--------------Initialize--------------------------------------------
 void initialize()
 {
-  light_capDetect.calibrate();
+  pros::Task cout_Task(coutTask);
+
+  
 }
 
 // -------------Initialize---------------------------------------------
@@ -30,10 +32,22 @@ void autonomous()
 //-------------opControl-----------------------------------------------
 void opcontrol()
 {
-  while (true)
+  while(true)
   {
-  std::cout << "light_capDetect =" << light_capDetect.get_value_calibrated() << std::endl;
-pros::delay(200);
+  driverControlTask();
+  baseControlTask();
+  pros::delay(50);
   }
 }
 //------------opControl------------------------------------------------
+
+void coutTask(void*)
+{
+  while(true)
+  {
+    std::cout <<"pot_armLift = " <<pot_armLift.get()<<std::endl;
+    std::cout <<"pot_armFlip = " <<pot_capFlipper.get()<<std::endl;
+    std::cout <<"pot_catapult = " <<pot_catapult.get()<<std::endl;
+    pros::delay(500);
+  }
+}

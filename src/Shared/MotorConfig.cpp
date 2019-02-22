@@ -1,13 +1,24 @@
 #include "main.h"
 #include "7842K_Main.h"
 
-okapi::Motor m_frontLeft(1);
-okapi::Motor m_frontRight(2);
-okapi::Motor m_rearLeft(3);
-okapi::Motor m_rearRight(4);
+int e_frontLeft = 9;
+int e_frontRight = 18;
+int e_rearLeft = 8;
+int e_rearRight = 7;
+
+okapi::MotorGroup leftChassis({e_frontLeft, e_rearLeft});
+okapi::MotorGroup rightChassis({e_frontRight, e_rearRight});
+
+okapi::Motor m_intake(2);
+
+okapi::Motor m_lift(4);
+
+okapi::Motor m_catapult(6);
+
+float chassisWidth = 11.75;
 
 okapi::ChassisControllerPID skidBase = ChassisControllerFactory::create(
-  {m_frontLeft,m_rearLeft} ,{m_frontRight,m_rearRight},
+  leftChassis, rightChassis,
   IterativePosPIDController::Gains{0.0, 0.0, 0.0}, //distance PID
   IterativePosPIDController::Gains{0.0, 0.0, 0}, //Angle PID
   IterativePosPIDController::Gains{0.0, 0, 0}, //turning PID

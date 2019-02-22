@@ -1,8 +1,19 @@
+#pragma once
+
 #include "main.h"
 
-extern okapi::Motor m_frontLeft;
-extern okapi::Motor m_frontRight;
-extern okapi::Motor m_rearLeft;
-extern okapi::Motor m_rearRight;
+extern int e_frontLeft;
+extern int e_frontRight;
+extern int e_rearLeft;
+extern int e_rearRight;
+
+extern okapi::MotorGroup leftChassis;
+extern okapi::MotorGroup rightChassis;
+
+extern okapi::Motor m_intake;
+
+extern okapi::Motor m_catapult;
+
+extern okapi::Motor m_lift;
 
 extern okapi::ChassisControllerPID skidBase;
