@@ -1,24 +1,31 @@
 #include "main.h"
 #include "7842K_Main.h"
+#include "_Auto/driveArc.h"
 
-void calcArc(double bigCircRadius, double degMove)
+void calcArc(double bigCircRadius, double degMove)                                    //bigCircRadius input in inches
 {
-  double bigCircDiameter = ((bigCircRadius * 2) * pi);   //960 motor encoder units in one rotation
-  double smallCircDiameter = (((bigcircRadius- chassisWidth) * 2)  * pi);
+  double bigCircCircumference = ((bigCircRadius * 2) * pi);                           //360 motor encoder units in one rotation
+  double smallCircCircumference = (((bigCircRadius - chassisWidth) * 2)  * pi);
 
-  double bigCircDistance = bigCircDiameter * (degMove/360) /wheelDiameter * 960;
-  double smallCircDistance = bigCircDiameter * (degMove/360) /wheelDiameter * 960;
+  double bigCircDistance = bigCircCircumference * (degMove/360) /4 * 360;
+  double smallCircDistance = smallCircCircumference * (degMove/360) /4 * 360;
 
-  double smallPower = 127
+  double smallVelocity = (smallCircCircumference/bigCircCircumference) * 200;
 }
 
-void driveArcLeft(double bigCircRadius, double degMove)
+void driveArcLeft(double bigCircRadius1, double degMove1)
 {
-  calcArc();
-  skidBase.left();
+  calcArc(bigCircRadius1,degMove1);
+  m_frontLeft.moveRelative(smallCircDistance, smallVelocity);
+  m_rearLeft.moveRelative(smallCircDistance, smallVelocity);
+  m_frontRight.moveRelative(bigCircDistance, 200);
+  m_rearRight.moveRelative(bigCircDistance, 200);
 }
-void driveArcright(double bigCircRadius, double degMove)
+void driveArcright(double bigCircRadius2, double degMove2)
 {
-  calcArc();
-  skidBase.left();
+  calcArc(bigCircRadius2, degMove2);
+  m_frontLeft.moveRelative(bigCircDistance, 200);
+  m_rearLeft.moveRelative(bigCircDistance, 200);
+  m_frontRight.moveRelative(smallCircDistance,smallVelocity);
+  m_rearRight.moveRelative(smallCircDistance,smallVelocity);
 }

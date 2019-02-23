@@ -4,9 +4,11 @@
 
 void baseControlTask()
 {
-  long joystickch2 = HIDMain.get_analog(ANALOG_RIGHT_Y) /127 * 12000;
-  long joystickch4 = HIDMain.get_analog(ANALOG_LEFT_X) /127 *12000;
+  long joystickch4 = HIDMain.get_analog(ANALOG_RIGHT_Y);
+  long joystickch2 = HIDMain.get_analog(ANALOG_LEFT_X);
 
-  leftChassis.moveVoltage(joystickch2 + joystickch4);
-  rightChassis.moveVoltage(joystickch2 - joystickch4);
+  m_frontLeft.move(joystickch2 + joystickch4);
+  m_rearLeft.move(joystickch2 + joystickch4);
+  m_frontRight.move(joystickch2 - joystickch4);
+  m_rearRight.move(joystickch2 - joystickch4);
 }

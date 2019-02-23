@@ -6,7 +6,7 @@ void initialize()
 {
   pros::Task cout_Task(coutTask);
 
-  
+
 }
 
 // -------------Initialize---------------------------------------------
@@ -25,7 +25,7 @@ void competition_initialize() {}
 //--------------Autonomous---------------------------------------------
 void autonomous()
 {
-  auto_1();
+  //auto_1();
 }
 //--------------Autonomous---------------------------------------------
 
