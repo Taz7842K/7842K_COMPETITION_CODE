@@ -2,6 +2,10 @@
 #include "7842K_Main.h"
 #include "_Auto/driveArc.h"
 
+double smallVelocity;
+double bigCircDistance;
+double smallCircDistance;
+
 void calcArc(double bigCircRadius, double degMove)                                    //bigCircRadius input in inches
 {
   double bigCircCircumference = ((bigCircRadius * 2) * pi);                           //360 motor encoder units in one rotation
@@ -21,7 +25,7 @@ void driveArcLeft(double bigCircRadius1, double degMove1)
   m_frontRight.moveRelative(bigCircDistance, 200);
   m_rearRight.moveRelative(bigCircDistance, 200);
 }
-void driveArcright(double bigCircRadius2, double degMove2)
+void driveArcRight(double bigCircRadius2, double degMove2)
 {
   calcArc(bigCircRadius2, degMove2);
   m_frontLeft.moveRelative(bigCircDistance, 200);

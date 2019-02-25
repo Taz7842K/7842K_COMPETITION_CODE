@@ -36,6 +36,13 @@ void opcontrol()
   {
   driverControlTask();
   baseControlTask();
+
+  if(HIDMain.get_digital(DIGITAL_Y))
+  {
+    autonSelector.run();
+    pros::delay(500000);
+  }
+
   pros::delay(50);
   }
 }

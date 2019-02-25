@@ -16,7 +16,7 @@ extern okapi::Motor m_catapult;
 
 extern okapi::Motor m_lift;
 
-extern okapi::ChassisControllerPID skidBase;
+extern okapi::ChassisControllerIntegrated skidBase;
 
 extern double pGain;
 extern double dGain;

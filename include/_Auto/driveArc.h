@@ -2,6 +2,9 @@
 
 #include "main.h"
 
-double smallVelocity;
-double bigCircDistance;
-double smallCircDistance;
+extern double smallVelocity;
+extern double bigCircDistance;
+extern double smallCircDistance;
+
+void driveArcLeft(double bigCircRadius1, double degMove1);
+void driveArcRight(double bigCircRadius2, double degMove2);

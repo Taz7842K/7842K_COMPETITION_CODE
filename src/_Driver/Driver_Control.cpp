@@ -7,14 +7,14 @@ void driverControlTask()
 {
 
   //-----------------------------Intake Control--------------------------------------------------------
-  if((intakeOn = false) && HIDMain.get_digital(DIGITAL_A))
+  if(HIDMain.get_digital(DIGITAL_A))
   {
-    intakeOn = true;
     m_intake.move(127);
+    
   }
-  else if((intakeOn = true) && HIDMain.get_digital(DIGITAL_B))
+  else if(HIDMain.get_digital(DIGITAL_A))
   {
-    intakeOn = false;
+
     m_intake.move(0);
   }
 
@@ -22,7 +22,7 @@ void driverControlTask()
   //--------------------------Intake Control-----------------------------------------------------------
 
   //--------------------------Catapult Control---------------------------------------------------------
-  if(HIDMain.get_digital(DIGITAL_R1) && pot_catapult.get() < 1250) //moves catapult into loading position
+  if(HIDMain.get_digital(DIGITAL_R1) && pot_catapult.get() < 1245) //moves catapult into loading position
   {
     m_catapult.move(-127);
   }
