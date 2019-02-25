@@ -1,10 +1,10 @@
 #pragma once
 #include "main.h"
 
-enum intakeState
+enum state
 {
 
-  on
-  off
+  ON,
+  OFF,
 
-}
+};

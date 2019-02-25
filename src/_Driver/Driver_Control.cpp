@@ -1,21 +1,44 @@
 #include "main.h"
 #include "7842K_Main.h"
 
-bool intakeOn = false;
+state intake = OFF;
 
 void driverControlTask()
 {
 
   //-----------------------------Intake Control--------------------------------------------------------
-  if(HIDMain.get_digital(DIGITAL_A))
+  if(HIDMain.get_digital(DIGITAL_A) && state intake = OFF)
   {
     m_intake.move(127);
-    
+    static bool firstPress = true;
   }
-  else if(HIDMain.get_digital(DIGITAL_A))
-  {
 
+  else if(HIDMain.get_digital(DIGITAL_B) && state intake = OFF)
+  {
+    m_intake.move(-127);
+    firstPress = true;
+  }
+
+  else if (HIDMain.get_digital(DIGITAL_A) = 0 && firstPress = true)
+  {
+    state intake = ON;
+  }
+
+  else if(HIDMain.get_digital(DIGITAL_A) && state intake = ON)
+  {
     m_intake.move(0);
+    static bool firstRelease = true;
+  }
+
+  else if(HIDMain.get_digital(DIGITAL_B) && state intake = ON)
+  {
+    m_intake.move(0);
+    firstRelease = true;
+  }
+
+  else if (HIDMain.get_digital(DIGITAL_A) = 0 && firstRelease = true)
+  {
+    state intake = OFF;
   }
 
 
@@ -51,7 +74,23 @@ void driverControlTask()
 
   else
   {
-    m_lift.move(0);
+    if(pot_armLift.get_analog() > vertical < far tipping point)
+    {
+      m_lift.move(-5);
+    }
+    else if(pot_armLift.get_analog() > vertical > far tipping point)
+    {
+      m_lift.move(-10);
+    }
   }
+    else if(pot_armLift.get_analog() < vertical > close tipping point)
+    {
+      m_lift.move(5);
+    }
+    else if(pot_armLift.get_analog() < vertical < close tipping point)
+    {
+      m_lift.move(10);
+    }
+
   //-------------------------Lift Control--------------------------------------------------------------
 }
