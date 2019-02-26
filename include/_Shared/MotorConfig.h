@@ -14,7 +14,8 @@ extern okapi::Motor m_intake;
 
 extern okapi::Motor m_catapult;
 
-extern okapi::Motor m_lift;
+extern okapi::Motor m_lift1;
+extern okapi::Motor m_lift2;
 
 extern okapi::ChassisControllerIntegrated skidBase;
 

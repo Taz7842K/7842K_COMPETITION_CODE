@@ -8,11 +8,12 @@ okapi::Motor m_rearRight(7);
 
 okapi::Motor m_intake(2);
 
-okapi::Motor m_lift(4);
+okapi::Motor m_lift1(1);
+okapi::Motor m_lift2(15);
 
 okapi::Motor m_catapult(6);
 
-lib7842::AutonSelector autonSelector(lv_scr_act(), {{"Close", autoClose}});
+lib7842::AutonSelector autonSelector(lv_scr_act(), {{"Disabled", autoNothing},{"Skills", autoSkills},{"Front", autoFront},{"Rear", autoRear}});
 
 okapi::ChassisControllerIntegrated skidBase = ChassisControllerFactory::create(
   {8, 9}, {-18, -7},

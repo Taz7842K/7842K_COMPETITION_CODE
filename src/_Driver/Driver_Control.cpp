@@ -2,47 +2,59 @@
 #include "7842K_Main.h"
 
 state intake = OFF;
+bool firstPress = false;
+bool firstRelease = false;
 
-void driverControlTask()
+//-----------------------------Intake Control--------------------------------------------------------
+void intakeControlTask()
 {
 
-  //-----------------------------Intake Control--------------------------------------------------------
-  if(HIDMain.get_digital(DIGITAL_A) && state intake = OFF)
+  if(HIDMain.get_digital(DIGITAL_A) && intake == OFF)
   {
     m_intake.move(127);
-    static bool firstPress = true;
-  }
-
-  else if(HIDMain.get_digital(DIGITAL_B) && state intake = OFF)
-  {
-    m_intake.move(-127);
     firstPress = true;
   }
 
-  else if (HIDMain.get_digital(DIGITAL_A) = 0 && firstPress = true)
+  // else if(HIDMain.get_digital(DIGITAL_B) && intake == OFF)
+  // {
+  //   m_intake.move(-127);
+  //   firstPress = true;
+  // }
+
+  else if (!HIDMain.get_digital(DIGITAL_A) && firstPress == true)
   {
-    state intake = ON;
+    intake = ON;
   }
 
-  else if(HIDMain.get_digital(DIGITAL_A) && state intake = ON)
-  {
-    m_intake.move(0);
-    static bool firstRelease = true;
-  }
-
-  else if(HIDMain.get_digital(DIGITAL_B) && state intake = ON)
+  else if(HIDMain.get_digital(DIGITAL_A) && intake == ON)
   {
     m_intake.move(0);
     firstRelease = true;
   }
 
-  else if (HIDMain.get_digital(DIGITAL_A) = 0 && firstRelease = true)
+  // else if(HIDMain.get_digital(DIGITAL_B) && intake == ON)
+  // {
+  //   m_intake.move(0);
+  //   firstRelease = true;
+  // }
+
+  else if (!HIDMain.get_digital(DIGITAL_A) && firstRelease == true)
   {
-    state intake = OFF;
+    intake = OFF;
+    firstPress = false;
+    firstRelease = false;
   }
 
+  else
+  {
 
-  //--------------------------Intake Control-----------------------------------------------------------
+  }
+}
+
+//--------------------------Intake Control-----------------------------------------------------------
+
+void driverControlTask()
+{
 
   //--------------------------Catapult Control---------------------------------------------------------
   if(HIDMain.get_digital(DIGITAL_R1) && pot_catapult.get() < 1245) //moves catapult into loading position
@@ -64,33 +76,37 @@ void driverControlTask()
   //--------------------------LIft Control-------------------------------------------------------------
   if(HIDMain.get_digital(DIGITAL_UP))
   {
-    m_lift.move(127);
+    m_lift1.move(127);
+    m_lift2.move(127);
   }
 
   else if(HIDMain.get_digital(DIGITAL_DOWN))
   {
-    m_lift.move(-127);
+    m_lift1.move(-127);
+    m_lift2.move(-127);
   }
 
   else
   {
-    if(pot_armLift.get_analog() > vertical < far tipping point)
-    {
-      m_lift.move(-5);
-    }
-    else if(pot_armLift.get_analog() > vertical > far tipping point)
-    {
-      m_lift.move(-10);
-    }
+    //   if(pot_armLift.get_analog() > vertical < far tipping point)
+    //   {
+    //     m_lift.move(-5);
+    //   }
+    //   else if(pot_armLift.get_analog() > vertical > far tipping point)
+    //   {
+    //     m_lift.move(-10);
+    //   }
+    // }
+    //   else if(pot_armLift.get_analog() < vertical > close tipping point)
+    //   {
+    //     m_lift.move(5);
+    //   }
+    //   else if(pot_armLift.get_analog() < vertical < close tipping point)
+    //   {
+    //     m_lift.move(10);
+    //   }
+    m_lift1.move(0);
+    m_lift2.move(0);
   }
-    else if(pot_armLift.get_analog() < vertical > close tipping point)
-    {
-      m_lift.move(5);
-    }
-    else if(pot_armLift.get_analog() < vertical < close tipping point)
-    {
-      m_lift.move(10);
-    }
-
   //-------------------------Lift Control--------------------------------------------------------------
 }

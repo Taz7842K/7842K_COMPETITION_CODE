@@ -35,6 +35,7 @@ void opcontrol()
   while(true)
   {
   driverControlTask();
+  intakeControlTask();
   baseControlTask();
 
   if(HIDMain.get_digital(DIGITAL_Y))

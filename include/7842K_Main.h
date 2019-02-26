@@ -13,6 +13,7 @@
 void coutTask(void*);
 
 void driverControlTask();
+void intakeControlTask();
 void baseControlTask();
 
 extern float chassisWidth;

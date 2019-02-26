@@ -6,6 +6,8 @@ double smallVelocity;
 double bigCircDistance;
 double smallCircDistance;
 
+int maxVelocity = 200;
+
 void calcArc(double bigCircRadius, double degMove)                                    //bigCircRadius input in inches
 {
   double bigCircCircumference = ((bigCircRadius * 2) * pi);                           //360 motor encoder units in one rotation
@@ -33,3 +35,24 @@ void driveArcRight(double bigCircRadius2, double degMove2)
   m_frontRight.moveRelative(smallCircDistance,smallVelocity);
   m_rearRight.moveRelative(smallCircDistance,smallVelocity);
 }
+
+// void threeInchStop()
+// {
+//   skidBase.setMaxVelocity(75);
+//   skidBase.moveDistance(3_in);
+//   pros::delay(100);
+//   skidBase.setMaxVelocity(maxVelocity);
+// }
+
+// void driveDistance(QLength distance)
+// {
+//   std::valarray<std::int32_t> lastEnc = skidBase.getSensorVals();
+//   skidBase.forward(1);
+//
+//   while(true) {
+//     QLength leftDistance = lastEnc[0] - skidBase.getSensorVals()[0] *
+//   }
+//   double wantedTicks = distance.
+// }
+
+void autoNothing(lib7842::autonSides){};
