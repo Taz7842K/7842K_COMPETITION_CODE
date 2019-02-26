@@ -4,7 +4,7 @@
 
 void baseControlTask()
 {
-  double joystickch2 = HIDMain.get_analog(ANALOG_RIGHT_Y);
+  double joystickch2 = HIDMain.get_analog(ANALOG_RIGHT_Y) * -1;
   double joystickch4 = HIDMain.get_analog(ANALOG_LEFT_X);
 
   m_frontLeft.move(joystickch2 + joystickch4);

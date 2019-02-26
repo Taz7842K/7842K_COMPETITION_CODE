@@ -6,4 +6,7 @@ void autoSkills(lib7842::autonSides);
 void autoRear(lib7842::autonSides);
 void autoNothing(lib7842::autonSides);
 
+
 extern int maxVelocity;
+
+extern int movDel;

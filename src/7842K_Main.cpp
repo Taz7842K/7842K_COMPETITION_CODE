@@ -4,6 +4,8 @@
 //--------------Initialize--------------------------------------------
 void initialize()
 {
+
+
   pros::Task cout_Task(coutTask);
 
 
@@ -38,7 +40,7 @@ void opcontrol()
   intakeControlTask();
   baseControlTask();
 
-  if(HIDMain.get_digital(DIGITAL_Y))
+  if(HIDMain.get_digital(DIGITAL_LEFT))
   {
     autonSelector.run();
     pros::delay(500000);
@@ -55,7 +57,7 @@ void coutTask(void*)
   {
     std::cout <<"pot_armLift = " <<pot_armLift.get()<<std::endl;
     std::cout <<"pot_armFlip = " <<pot_capFlipper.get()<<std::endl;
-    std::cout <<"pot_catapult = " <<pot_catapult.get()<<std::endl;
+    std::cout <<"m_catapult = " <<m_catapult.getPosition()<<std::endl;
     pros::delay(500);
   }
 }

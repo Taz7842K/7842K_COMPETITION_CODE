@@ -1,6 +1,8 @@
 #include "main.h"
 #include "7842K_Main.h"
-#include "_Auto/driveArc.h"
+
+int movDel = 80;
+
 
 double smallVelocity;
 double bigCircDistance;
@@ -26,6 +28,7 @@ void driveArcLeft(double bigCircRadius1, double degMove1)
   m_rearLeft.moveRelative(smallCircDistance, smallVelocity);
   m_frontRight.moveRelative(bigCircDistance, 200);
   m_rearRight.moveRelative(bigCircDistance, 200);
+  while(m_frontLeft.get_actual_velocity()>75){pros::delay(10);}
 }
 void driveArcRight(double bigCircRadius2, double degMove2)
 {
@@ -34,15 +37,30 @@ void driveArcRight(double bigCircRadius2, double degMove2)
   m_rearLeft.moveRelative(bigCircDistance, 200);
   m_frontRight.moveRelative(smallCircDistance,smallVelocity);
   m_rearRight.moveRelative(smallCircDistance,smallVelocity);
+
+  while(m_frontLeft.get_actual_velocity()>75){pros::delay(10);}
 }
 
-// void threeInchStop()
-// {
-//   skidBase.setMaxVelocity(75);
-//   skidBase.moveDistance(3_in);
-//   pros::delay(100);
-//   skidBase.setMaxVelocity(maxVelocity);
-// }
+void slowStop(QLength stopDistance)
+{
+  skidBase.setMaxVelocity(75);
+  skidBase.moveDistance(stopDistance);
+  pros::delay(100);
+  skidBase.setMaxVelocity(maxVelocity);
+}
+
+void driveFullPower(float driveDistance)
+{
+  double calcDriveDistance = driveDistance / 4 * 360;
+
+  m_frontLeft.moveRelative(calcDriveDistance,200);
+  m_frontRight.moveRelative(calcDriveDistance,200);
+  m_rearLeft.moveRelative(calcDriveDistance,200);
+  m_rearRight.moveRelative(calcDriveDistance,200);
+
+  while(m_frontLeft.get_actual_velocity()>75){pros::delay(10);}
+}
+
 
 // void driveDistance(QLength distance)
 // {

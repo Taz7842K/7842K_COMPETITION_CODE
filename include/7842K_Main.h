@@ -5,7 +5,7 @@
 #include "_Shared/MotorConfig.h"
 #include "_Shared/SensorConfig.h"
 #include "_Driver/Base_Control.h"
-#include "_Auto/driveArc.h"
+#include "_Auto/Auto_Drive_Functions.h"
 #include "_Display/Auto_Selector.h"
 #include "_Driver/Driver_Control.h"
 
