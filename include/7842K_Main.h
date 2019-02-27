@@ -11,6 +11,7 @@
 
 
 void coutTask(void*);
+void killTask(void*);
 
 void driverControlTask();
 void intakeControlTask();

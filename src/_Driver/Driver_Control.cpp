@@ -30,17 +30,13 @@ void driverControlTask()
 {
 
   //--------------------------Catapult Control---------------------------------------------------------
-  if(HIDMain.get_digital(DIGITAL_A))
-  {
-    catapultToggle = true;
-  }
 
-  if(catapultToggle == true && pot_catapult.get() < 1245)
+  if(pot_catapult.get() < 1245)
   {
     m_catapult.move(-127);
   }
 
-  else if(catapultToggle == true && pot_catapult.get() > 1242 )
+  if(pot_catapult.get() > 1243)
   {
     m_catapult.move(0);
   }

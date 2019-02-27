@@ -6,8 +6,9 @@ void initialize()
 {
 
 
-  pros::Task cout_Task(coutTask);
+  pros::Task t_coutTask(coutTask);
 
+  pros::Task t_killTask(killTask);
 
 }
 
@@ -36,17 +37,17 @@ void opcontrol()
 {
   while(true)
   {
-  driverControlTask();
-  intakeControlTask();
-  baseControlTask();
+    driverControlTask();
+    intakeControlTask();
+    baseControlTask();
 
-  if(HIDMain.get_digital(DIGITAL_LEFT))
-  {
-    autonSelector.run();
-    pros::delay(500000);
-  }
+    if(HIDMain.get_digital(DIGITAL_LEFT))
+    {
+      autonSelector.run();
+      pros::delay(500000);
+    }
 
-  pros::delay(50);
+    pros::delay(50);
   }
 }
 //------------opControl------------------------------------------------
@@ -59,5 +60,18 @@ void coutTask(void*)
     std::cout <<"pot_armFlip = " <<pot_capFlipper.get()<<std::endl;
     std::cout <<"m_catapult = " <<m_catapult.getPosition()<<std::endl;
     pros::delay(500);
+  }
+}
+
+void killTask(void*)
+{
+  while(true)
+  {
+    if(HIDMain.get_digital(DIGITAL_DOWN))
+    {
+      exit(0);
+    }
+
+    pros::delay(20);
   }
 }

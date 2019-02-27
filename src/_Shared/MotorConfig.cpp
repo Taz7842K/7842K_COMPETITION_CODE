@@ -18,5 +18,5 @@ lib7842::AutonSelector autonSelector(lv_scr_act(), {{"Disabled", autoNothing},{"
 okapi::ChassisControllerIntegrated skidBase = ChassisControllerFactory::create(
   {8, 9}, {-18, -7},
   AbstractMotor::gearset::green,
-  {4_in, 11.3_in}
+  {4_in, 11.35_in}
 );
