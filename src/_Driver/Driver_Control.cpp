@@ -31,21 +31,23 @@ void driverControlTask()
 
   //--------------------------Catapult Control---------------------------------------------------------
 
-  if(pot_catapult.get() < 1245)
-  {
-    m_catapult.move(-127);
-  }
-
-  if(pot_catapult.get() > 1243)
-  {
-    m_catapult.move(0);
-  }
-
-  else if(HIDMain.get_digital(DIGITAL_R2))                             //shoots catapult and provides manual control
+  if(HIDMain.get_digital(DIGITAL_R2))                             //shoots catapult and provides manual control
   {
     m_catapult.move(-127);
     catapultToggle = false;
   }
+
+  else if(pot_catapult.get() < 1245)
+  {
+    m_catapult.move(-127);
+  }
+
+  else if(pot_catapult.get() > 1243)
+  {
+    m_catapult.move(0);
+  }
+
+
 
   else
   {
@@ -54,13 +56,14 @@ void driverControlTask()
   //--------------------------Catapult Control---------------------------------------------------------
 
   //--------------------------LIft Control-------------------------------------------------------------
-  if(HIDMain.get_digital(DIGITAL_L2))
+  if(HIDMain.get_digital(DIGITAL_L2))                   //Moves lift down
   {
-    m_lift1.move(50);
+    double liftPower = abs(m_lift1.getPosition() /fullrange * 127);
+    m_lift1.move();
     m_lift2.move(50);
   }
 
-  else if(HIDMain.get_digital(DIGITAL_L1))
+  else if(HIDMain.get_digital(DIGITAL_L1))              //Moves lift up
   {
     m_lift1.move(-70);
     m_lift2.move(-70);

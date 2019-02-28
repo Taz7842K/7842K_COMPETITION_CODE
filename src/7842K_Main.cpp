@@ -4,12 +4,11 @@
 //--------------Initialize--------------------------------------------
 void initialize()
 {
-
-
   pros::Task t_coutTask(coutTask);
-
   pros::Task t_killTask(killTask);
 
+  m_lift1.tarePosition();
+  m_lift2.tarePosition();
 }
 
 // -------------Initialize---------------------------------------------
@@ -70,6 +69,7 @@ void killTask(void*)
     if(HIDMain.get_digital(DIGITAL_DOWN))
     {
       exit(0);
+      std::cout <<"Program Stopped?"<<std::endl;
     }
 
     pros::delay(20);

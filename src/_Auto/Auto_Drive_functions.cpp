@@ -15,8 +15,8 @@ void calcArc(double bigCircRadius, double degMove)                              
   double bigCircCircumference = ((bigCircRadius * 2) * pi);                           //360 motor encoder units in one rotation
   double smallCircCircumference = (((bigCircRadius - chassisWidth) * 2)  * pi);
 
-  double bigCircDistance = bigCircCircumference * (degMove/360) /4 * 360;
-  double smallCircDistance = smallCircCircumference * (degMove/360) /4 * 360;
+  double bigCircDistance = bigCircCircumference * (degMove/360) /12.57 * 360;
+  double smallCircDistance = smallCircCircumference * (degMove/360) /12.57 * 360;
 
   double smallVelocity = (smallCircCircumference/bigCircCircumference) * 200;
 }
@@ -73,7 +73,7 @@ void slowStop(QLength stopDistance)
 
 void driveFullPower(float driveDistance)
 {
-  double calcDriveDistance = driveDistance / 4 * 360;
+  double calcDriveDistance = driveDistance / 12.57 * 360;
 
   m_frontLeft.moveRelative(calcDriveDistance,200);
   m_frontRight.moveRelative(calcDriveDistance,200);
@@ -85,14 +85,14 @@ void driveFullPower(float driveDistance)
 
 void driveFullPowerReverse(float driveDistance)
 {
-  double calcDriveDistance = driveDistance / 4 * 360;
+  double calcDriveDistance = driveDistance / 12.57 * 360;
 
   m_frontLeft.moveRelative(calcDriveDistance,200);
   m_frontRight.moveRelative(calcDriveDistance,200);
   m_rearLeft.moveRelative(calcDriveDistance,200);
   m_rearRight.moveRelative(calcDriveDistance,200);
 
-  while(m_frontLeft.getTargetPosition() < m_frontLeft.getPosition() + 180){pros::delay(10);}
+  while(m_frontLeft.getTargetPosition() < m_frontLeft.getPosition() + 720){pros::delay(10);}
 }
 
 // void driveDistance(QLength distance)

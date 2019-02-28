@@ -14,7 +14,7 @@ void autoFront(lib7842::autonSides side)
 
     m_intake.move(-80);
 
-    driveFullPower(36);
+    driveFullPower(10);
     slowStop(6_in);
 
     pros::delay(200);
@@ -24,14 +24,14 @@ void autoFront(lib7842::autonSides side)
 
     skidBase.turnAngle(90_deg);
 
-    m_catapult.moveRelative(-50,200);
-    while(!m_catapult.isStopped()){pros::delay(10);}
+    // m_catapult.moveRelative(-50,200);
+    // while(!m_catapult.isStopped()){pros::delay(10);}
 
-    m_catapult.moveRelative(-360,200);
+    // m_catapult.moveRelative(-360,200);
 
     skidBase.moveDistance(-8_in);
 
-    while(pot_catapult.get() < 1245 ){m_catapult.move(-127); pros::delay(10);}
+    // while(pot_catapult.get() < 1245 ){m_catapult.move(-127); pros::delay(10);}
 
     driveFullPower(34);
     slowStop(2_in);
@@ -40,8 +40,8 @@ void autoFront(lib7842::autonSides side)
 
     slowStop(6_in);
 
-    m_catapult.moveRelative(-50,200);
-    while(!m_catapult.isStopped()){pros::delay(10);}
+    // m_catapult.moveRelative(-50,200);
+    // while(!m_catapult.isStopped()){pros::delay(10);}
 
     driveFullPower(6);
   }
