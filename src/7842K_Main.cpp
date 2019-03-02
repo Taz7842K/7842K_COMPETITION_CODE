@@ -5,7 +5,6 @@
 void initialize()
 {
   pros::Task t_coutTask(coutTask);
-  pros::Task t_killTask(killTask);
 
   m_lift1.tarePosition();
   m_lift2.tarePosition();
@@ -27,13 +26,15 @@ void competition_initialize() {}
 //--------------Autonomous---------------------------------------------
 void autonomous()
 {
-  //auto_1();
+  autonSelector.run();
 }
 //--------------Autonomous---------------------------------------------
 
 //-------------opControl-----------------------------------------------
 void opcontrol()
 {
+  pros::delay(100);
+
   while(true)
   {
     driverControlTask();
@@ -42,8 +43,7 @@ void opcontrol()
 
     if(HIDMain.get_digital(DIGITAL_LEFT))
     {
-      autonSelector.run();
-      pros::delay(500000);
+      autoFront(lib7842::autonSides::red);
     }
 
     pros::delay(50);
@@ -55,23 +55,18 @@ void coutTask(void*)
 {
   while(true)
   {
-    std::cout <<"pot_armLift = " <<pot_armLift.get()<<std::endl;
-    std::cout <<"pot_armFlip = " <<pot_capFlipper.get()<<std::endl;
-    std::cout <<"m_catapult = " <<m_catapult.getPosition()<<std::endl;
+    std::cout <<"m_lift1 = " <<m_lift1.getPosition()<<std::endl;
+    std::cout <<"pot_catapult = " <<pot_catapult.get()<<std::endl;
+    std::cout <<"m_catapult Temperature" <<m_catapult.getTemperature()<<std::endl;
+    std::cout <<"m_catapult voltage" <<m_catapult.getVoltage()<<std::endl;
+
+
+    // if(HIDMain.get_digital(DIGITAL_DOWN))
+    // {
+    //   exit(0);
+    //   std::cout <<"Program Stopped?"<<std::endl;
+    // }
+
     pros::delay(500);
-  }
-}
-
-void killTask(void*)
-{
-  while(true)
-  {
-    if(HIDMain.get_digital(DIGITAL_DOWN))
-    {
-      exit(0);
-      std::cout <<"Program Stopped?"<<std::endl;
-    }
-
-    pros::delay(20);
   }
 }
