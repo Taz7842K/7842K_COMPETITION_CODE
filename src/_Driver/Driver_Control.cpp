@@ -58,12 +58,12 @@ void driverControlTask()
     m_catapult.move(-127);
   }
 
-  else if(pot_catapult.get() < 1255)
+  else if(pot_catapult.get() < 1250)
   {
     m_catapult.move(-127);
   }
 
-  else if(pot_catapult.get() > 1245)
+  else if(pot_catapult.get() > 1240)
   {
     m_catapult.move(0);
   }
