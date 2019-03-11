@@ -1,10 +1,16 @@
 #pragma once
 #include "main.h"
 
-enum state
+enum intakeStates
 {
 
   ON,
   OFF,
 
+};
+
+enum catapultStates
+{
+  i_loading,
+  i_
 };

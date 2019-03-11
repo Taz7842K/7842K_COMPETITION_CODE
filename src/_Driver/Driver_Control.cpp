@@ -53,25 +53,29 @@ void driverControlTask()
   //   m_catapult.move(0);
   // }
 
-  if(HIDMain.get_digital(DIGITAL_R2))                             //shoots catapult and provides manual control
+
+  if(HIDMain.get_digital(DIGITAL_R2))
+  {
+    m_catapult.move(-127);
+    catapultToggle = true;
+  }
+
+  else if(catapultToggle == true)
   {
     m_catapult.move(-127);
   }
 
-  else if(pot_catapult.get() < 1250)
-  {
-    m_catapult.move(-127);
-  }
-
-  else if(pot_catapult.get() > 1240)
+  else if(sw_catapult.get_value() == 1)
   {
     m_catapult.move(0);
+    catapultToggle = false;
+    pros::delay(50000000);
   }
 
   else
   {
     m_catapult.move(0);
-}
+  }
   //--------------------------Catapult Control---------------------------------------------------------
 
   //--------------------------LIft Control-------------------------------------------------------------

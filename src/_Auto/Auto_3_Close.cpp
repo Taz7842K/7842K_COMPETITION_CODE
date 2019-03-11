@@ -110,3 +110,4 @@ void autoFront(lib7842::autonSides side)
     skidBase.moveDistance(30_in);
     pros::delay(100);
   }
+}

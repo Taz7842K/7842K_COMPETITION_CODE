@@ -41,10 +41,10 @@ void opcontrol()
     intakeControlTask();
     baseControlTask();
 
-    if(HIDMain.get_digital(DIGITAL_LEFT))
-    {
-      autoFront(lib7842::autonSides::red);
-    }
+    // if(HIDMain.get_digital(DIGITAL_LEFT))
+    // {
+    //   autoFront(lib7842::autonSides::red);
+    // }
 
     pros::delay(50);
   }
@@ -59,7 +59,7 @@ void coutTask(void*)
     std::cout <<"pot_catapult = " <<pot_catapult.get()<<std::endl;
     std::cout <<"m_catapult Temperature" <<m_catapult.getTemperature()<<std::endl;
     std::cout <<"m_catapult voltage" <<m_catapult.getVoltage()<<std::endl;
-
+    std::cout <<"sw_catapult = "<<sw_catapult.get_value()<<std::endl;
 
     // if(HIDMain.get_digital(DIGITAL_DOWN))
     // {
