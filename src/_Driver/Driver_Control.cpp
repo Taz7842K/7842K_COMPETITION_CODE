@@ -1,11 +1,6 @@
 #include "main.h"
 #include "7842K_Main.h"
 
-
-
-bool firstPress = false;
-bool firstRelease = false;
-bool catapultToggle = false;
 //-----------------------------Intake Control--------------------------------------------------------
 void intakeControlTask()
 {
@@ -29,34 +24,25 @@ void intakeControlTask()
 
 void driverControlTask()
 {
+    if(HIDMain.get_digital(DIGITAL_R2))                             //shoots catapult and provides manual control
+ {
+   m_catapult.move(-127);
+ }
 
-  //--------------------------Catapult Control---------------------------------------------------------
-  if(HIDMain.get_digital(DIGITAL_R2))
-  {
-    m_catapult.move(-127);
-    catapultToggle = true;
-  }
+ else if(pot_catapult.get() < 2200)
+ {
+   m_catapult.move(-127);
+ }
 
-  else if(catapultToggle == true)
-  {
-    m_catapult.move(-127);
-  }
+ else if(pot_catapult.get() > 2200)
+ {
+   m_catapult.move(0);
+ }
 
-  else
-  {
-    m_catapult.move(0);
-  }
-
-  if(sw_catapult.get_value() == 1 || pot_catapult.get() < 2000)
-  {
-    m_catapult.move(0);
-    catapultToggle = false;
-  }
-
-  else
-  {
-    m_catapult.move(0);
-  }
+ else
+ {
+m_catapult.move(0);
+}
   //--------------------------Catapult Control---------------------------------------------------------
 
   //--------------------------LIft Control-------------------------------------------------------------

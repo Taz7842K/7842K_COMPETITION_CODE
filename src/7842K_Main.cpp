@@ -4,8 +4,6 @@
 //--------------Initialize--------------------------------------------
 void initialize()
 {
-  pros::Task t_coutTask(coutTask);
-
   m_lift1.tarePosition();
   m_lift2.tarePosition();
 }
@@ -41,10 +39,10 @@ void opcontrol()
     intakeControlTask();
     baseControlTask();
 
-    // if(HIDMain.get_digital(DIGITAL_LEFT))
-    // {
-    //   autoFront(lib7842::autonSides::red);
-    // }
+    if(HIDMain.get_digital(DIGITAL_LEFT))
+    {
+      autonSelector.run();
+    }
 
     pros::delay(50);
   }
