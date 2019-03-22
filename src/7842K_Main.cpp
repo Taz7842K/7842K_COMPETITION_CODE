@@ -4,7 +4,7 @@
 //--------------Initialize--------------------------------------------
 void initialize()
 {
-  m_lift1.tarePosition();
+    m_lift1.tarePosition();
   m_lift2.tarePosition();
 }
 
