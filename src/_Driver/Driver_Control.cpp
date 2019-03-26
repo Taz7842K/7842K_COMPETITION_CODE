@@ -37,24 +37,14 @@ void driverControlTask()
     catapultToggle = true;
   }
 
-  else if(catapultToggle == true)
+  else if(pot_catapult.get() < 2000)
   {
     m_catapult.move(-127);
   }
 
   else
   {
-    m_catapult.move(0);
-  }
-
-  if(sw_catapult.get_value() == 1 || pot_catapult.get() < 2000)
-  {
-    m_catapult.move(0);
-    catapultToggle = false;
-  }
-
-  else
-  {
+    m_catapult.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
     m_catapult.move(0);
   }
   //--------------------------Catapult Control---------------------------------------------------------
