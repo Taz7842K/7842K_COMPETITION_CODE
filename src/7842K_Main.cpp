@@ -1,10 +1,15 @@
 #include "main.h"
 #include "7842K_Main.h"
 
+pros::Task* intakeTask_t = nullptr;
+pros::Task* flywheelTask_t = nullptr;
+pros::Task* objectTask_t = nullptr;
+pros::Task* odomTask_t = nullptr;
+
 //--------------Initialize--------------------------------------------
 void initialize()
 {
-    m_lift1.tarePosition();
+  m_lift1.tarePosition();
   m_lift2.tarePosition();
 }
 
