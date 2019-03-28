@@ -13,7 +13,7 @@ void setBasePower(int xPower, int yPower, int zPower)
 void baseControlTask()
 {
 
-    double joystickch2 = HIDMain.get_analog(ANALOG_RIGHT_Y);
+    double joystickch2 = HIDMain.get_analog(ANALOG_RIGHT_Y) * -1;
     double joystickch1 = HIDMain.get_analog(ANALOG_RIGHT_X);
     double joystickch4 = HIDMain.get_analog(ANALOG_LEFT_X);
 

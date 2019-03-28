@@ -36,8 +36,9 @@ void autonomous()
 //-------------opControl-----------------------------------------------
 void opcontrol()
 {
-  pros::delay(100);
 
+  intakeState = intakeStates::driver;
+  
   while(true)
   {
     driverControlTask();

@@ -1,16 +1,30 @@
 #pragma once
 #include "main.h"
 
-enum intakeStates
+enum class intakeStates
 {
 
-  ON,
-  OFF,
+  forward,
+  reverse,
+  stopped,
+  driver,
 
 };
+extern intakeStates intakeState;
 
-enum catapultStates
+enum class catapultStates
 {
-  i_loading,
-  i_
+  loading,
+  loaded,
 };
+extern catapultStates catapultState;
+
+
+enum class liftStates
+{
+  up,
+  down,
+  smoothstop,
+  stopped,
+};
+extern liftStates liftState;

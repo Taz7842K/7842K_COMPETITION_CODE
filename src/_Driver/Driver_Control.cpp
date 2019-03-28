@@ -21,31 +21,52 @@ void intakeControlTask()
 }
 
 //--------------------------Intake Control-----------------------------------------------------------
-
-void driverControlTask()
+//--------------------------Catapult Control---------------------------------------------------------
+void catapultControlTask()
 {
+  switch (catapultState)
+  {
+    case catapultStates::loading:
+
+    while (pot_catapult.get() < 2230)
+    {
+      m_catapult.move(-127);
+    }
+
+    catapultState = catapultStates::loaded;
+
+    break;
+
+    case catapultStates::loaded:
+
     if(HIDMain.get_digital(DIGITAL_R2))                             //shoots catapult and provides manual control
- {
-   m_catapult.move(-127);
- }
+    {
+      m_catapult.move(-127);
+    }
 
- else if(pot_catapult.get() < 2200)
- {
-   m_catapult.move(-127);
- }
+    else if(pot_catapult.get() < 1000)
+    {
+      catapultState = catapultStates::loading;
+    }
 
- else if(pot_catapult.get() > 2200)
- {
-   m_catapult.move(0);
- }
+    break;
+  }
 
- else
- {
-m_catapult.move(0);
+
+
+
+  else
+  {
+    m_catapult.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+    m_catapult.move(0);
+  }
 }
-  //--------------------------Catapult Control---------------------------------------------------------
+//--------------------------Catapult Control---------------------------------------------------------
 
-  //--------------------------LIft Control-------------------------------------------------------------
+//--------------------------LIft Control-------------------------------------------------------------
+void liftControlTask()
+{
+
   if(HIDMain.get_digital(DIGITAL_L2))                   //Moves lift down
   {
     // double liftPower = abs(m_lift1.getPosition() /fullrange * 127);
@@ -65,6 +86,6 @@ m_catapult.move(0);
     m_lift2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     m_lift1.moveVelocity(0);
     m_lift2.moveVelocity(0);
+  }
 }
-  //-------------------------Lift Control--------------------------------------------------------------
-}
+//-------------------------Lift Control--------------------------------------------------------------
