@@ -4,15 +4,25 @@
 //-----------------------------Intake Control--------------------------------------------------------
 void intakeControlTask()
 {
-  if(HIDMain.get_digital(DIGITAL_B))
+  switch(intakeState)
   {
-    m_intake.move(127);
-  }
 
-  else if(HIDMain.get_digital(DIGITAL_R1))
-  {
-    m_intake.move(-127);
-  }
+  case intakeStates::reverse:
+    m_intake.move(127);
+  break;
+
+  case intakeStates::forward:
+  m_intake.move(127);
+  break;
+
+  case intakeStates::stopped:
+  m_intake.move(0);
+  break;
+
+  case intakeStates::driver:
+
+  
+  break;
 
   else
   {
