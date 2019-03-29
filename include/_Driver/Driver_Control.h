@@ -1,6 +1,11 @@
 #pragma once
 #include "main.h"
 
+void catapultControlTask(void*);
+void liftControlTask(void*);
+void intakeControlTask(void*);
+void baseControlTask(void*);
+
 enum class intakeStates
 {
 
