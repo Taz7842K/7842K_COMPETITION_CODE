@@ -1,6 +1,8 @@
 #include "main.h"
 #include "7842K_Main.h"
 
+catapultStates catapultState = catapultStates::loading;
+
 void catapultControlTask(void*)
 {
   m_catapult.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
