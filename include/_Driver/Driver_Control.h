@@ -21,6 +21,7 @@ enum class catapultStates
 {
   loading,
   loaded,
+  tare,
 };
 extern catapultStates catapultState;
 

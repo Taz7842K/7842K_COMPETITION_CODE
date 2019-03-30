@@ -14,6 +14,8 @@ void initialize()
   m_lift1.tarePosition();
   m_lift2.tarePosition();
 
+  initPotCatapult = pot_catapult.get();
+
   light_catapult.calibrate();
 
   // if (pot_catapult.get() > 1000)
@@ -72,12 +74,9 @@ void coutTask(void*)
 {
   while(true)
   {
-    std::cout <<"m_lift1 = " <<m_lift1.getPosition()<<std::endl;
     std::cout <<"light_catapult"<<light_catapult.get_value_calibrated()<<std::endl;
+    std::cout <<"m_catapult.getCurrentDraw = "<<m_catapult.getCurrentDraw()<<std::endl;
     std::cout <<"m_catapult Temperature" <<m_catapult.getTemperature()<<std::endl;
-    std::cout <<"m_catapult voltage" <<m_catapult.getVoltage()<<std::endl;
-    std::cout <<"sw_catapult = "<<sw_catapult.get_value()<<std::endl;
-
     pros::delay(20);
   }
 }

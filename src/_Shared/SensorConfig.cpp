@@ -12,11 +12,3 @@ pros::ADIDigitalIn sw_catapult('A');
 pros::Controller HIDMain(CONTROLLER_MASTER);
 
 double initPotCatapult;
-
-double pot_catapultRead()
-{
-
-  double pot_catapultRead = pot_catapult.get() - initPotCatapult;
-
-  return pot_catapultRead;
-}
