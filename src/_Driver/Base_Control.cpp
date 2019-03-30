@@ -2,13 +2,24 @@
 
 #include "7842K_Main.h"
 
-void baseControlTask()
+void setBasePower(int xPower, int yPower, int zPower)
 {
-  double joystickch2 = HIDMain.get_analog(ANALOG_RIGHT_Y) * -1;
-  double joystickch4 = HIDMain.get_analog(ANALOG_LEFT_X) * 0.75;
+  m_frontRight.move(yPower-xPower-zPower);
+	m_rearRight.move(yPower+xPower-zPower);
+	m_frontLeft.move(yPower+xPower+zPower);
+  m_rearLeft.move(yPower-xPower+zPower);
+}
 
-  m_frontLeft.move(joystickch2 + joystickch4);
-  m_rearLeft.move(joystickch2 + joystickch4);
-  m_frontRight.move(joystickch2 - joystickch4);
-  m_rearRight.move(joystickch2 - joystickch4);
+void baseControlTask(void*)
+{
+  while(true)
+  {
+    double joystickch2 = HIDMain.get_analog(ANALOG_RIGHT_Y) * -1;
+    double joystickch1 = HIDMain.get_analog(ANALOG_RIGHT_X) * -1;
+    double joystickch4 = HIDMain.get_analog(ANALOG_LEFT_X);
+
+    setBasePower(joystickch1,joystickch2,joystickch4);
+
+    pros::delay(20);
+  }
 }

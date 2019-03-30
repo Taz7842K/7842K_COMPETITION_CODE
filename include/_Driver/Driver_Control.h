@@ -1,10 +1,36 @@
 #pragma once
 #include "main.h"
 
-enum state
+void catapultControlTask(void*);
+void liftControlTask(void*);
+void intakeControlTask(void*);
+void baseControlTask(void*);
+
+enum class intakeStates
 {
 
-  ON,
-  OFF,
+  forward,
+  reverse,
+  stopped,
+  driver,
 
 };
+extern intakeStates intakeState;
+
+enum class catapultStates
+{
+  loading,
+  loaded,
+  tare,
+};
+extern catapultStates catapultState;
+
+
+enum class liftStates
+{
+  up,
+  down,
+  smoothstop,
+  stopped,
+};
+extern liftStates liftState;
