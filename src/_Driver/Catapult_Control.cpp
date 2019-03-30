@@ -8,15 +8,15 @@ void catapultControlTask(void*)
   while(true)
   {
     //---------------------------------manual catapult control--------------------------------------------------
-    if(HIDMain.get_digital(DIGITAL_R2))                             //shoots catapult and provides manual control
-      {
-        m_catapult.move(-127);
-      }
+    if(HIDMain.get_digital(DIGITAL_R2))
+    {
+      m_catapult.move(-127);
+    }
 
-      else
-      {
-        m_catapult.move(0);
-      }
+    else
+    {
+      m_catapult.move(0);
+    }
     //---------------------------------manual catapult control--------------------------------------------------
 
 
@@ -35,7 +35,7 @@ void catapultControlTask(void*)
     //
     //   case catapultStates::loaded:
     //
-    //   if(HIDMain.get_digital(DIGITAL_R2))                             //shoots catapult and provides manual control
+    //   if(HIDMain.get_digital(DIGITAL_R2))                             
     //   {
     //     m_catapult.move(-127);
     //   }
