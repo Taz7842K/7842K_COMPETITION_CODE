@@ -10,11 +10,15 @@ void catapultControlTask(void*)
   while(true)
   {
     //---------------------------------manual catapult control--------------------------------------------------
-    if(HIDMain.get_digital(DIGITAL_R2))
+    if(pot_catapult.get()<2200)
     {
       m_catapult.move(-127);
     }
+    else if(HIDMain.get_digital(DIGITAL_R2))
+{
+      m_catapult.move(-127);
 
+}
     else
     {
       m_catapult.move(0);

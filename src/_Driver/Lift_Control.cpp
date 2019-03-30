@@ -24,8 +24,8 @@ void liftControlTask(void*)
     }
     else
     {
-      m_lift1.move(0);
-      m_lift2.move(0);
+      m_lift1.moveVelocity(0);
+      m_lift2.moveVelocity(0);
     }
     pros::delay(20);
   }

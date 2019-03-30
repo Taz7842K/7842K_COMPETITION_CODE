@@ -74,10 +74,12 @@ void coutTask(void*)
 {
   while(true)
   {
-    std::cout <<"light_catapult ="<<light_catapult.get_value_calibrated()<<std::endl;
-    std::cout <<"m_catapult.getCurrentDraw = "<<m_catapult.getCurrentDraw()<<std::endl;
-    std::cout <<"m_catapult Temperature =" <<m_catapult.getTemperature()<<std::endl;
-    std::cout <<"m_catapult Position =" <<m_catapult.getPosition()<<std::endl;
+    std::cout <<"catapult pot =" <<pot_catapult.get()<<std::endl;
+    // std::cout <<"light_catapult ="<<light_catapult.get_value_calibrated()<<std::endl;
+    // std::cout <<"m_catapult.getCurrentDraw = "<<m_catapult.getCurrentDraw()<<std::endl;
+    // std::cout <<"m_catapult Temperature =" <<m_catapult.getTemperature()<<std::endl;
+    // std::cout <<"m_catapult Position =" <<m_catapult.getPosition()<<std::endl;
+
     pros::delay(20);
   }
 }
