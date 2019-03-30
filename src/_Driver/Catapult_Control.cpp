@@ -1,6 +1,8 @@
 #include "main.h"
 #include "7842K_Main.h"
 
+catapultStates catapultState = catapultStates::loaded;
+
 void catapultControlTask(void*)
 {
   m_catapult.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
@@ -35,7 +37,7 @@ void catapultControlTask(void*)
     //
     //   case catapultStates::loaded:
     //
-    //   if(HIDMain.get_digital(DIGITAL_R2))                             
+    //   if(HIDMain.get_digital(DIGITAL_R2))
     //   {
     //     m_catapult.move(-127);
     //   }
