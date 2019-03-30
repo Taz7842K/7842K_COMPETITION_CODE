@@ -14,18 +14,19 @@ void liftControlTask(void*)
   {
     if(HIDMain.get_digital(DIGITAL_L2))                   //Moves lift down
     {
-      wantedPower = 70;
+      m_lift1.move(70);
+      m_lift2.move(70);
     }
     else if(HIDMain.get_digital(DIGITAL_L1))              //Moves lift up
     {
-      wantedPower = -70;
+      m_lift1.move(-70);
+      m_lift2.move(-70);
     }
     else
     {
-      wantedPower = 0;
+      m_lift1.move(0);
+      m_lift2.move(0);
     }
-
-    slewRatePos();
-    slewRateNeg();
+    pros::delay(20);
   }
 }
