@@ -7,6 +7,11 @@ void autoRear(lib7842::autonSides);
 void autoNothing(lib7842::autonSides);
 void autoTest(lib7842::autonSides);
 
+void autoFrontRed();
+void autoFrontBlue();
+void autoRearRed();
+void autoRearBlue();
+
 extern int maxVelocity;
 
 extern int movDel;

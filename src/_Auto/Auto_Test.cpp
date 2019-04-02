@@ -3,12 +3,9 @@
 
 void autoTest(lib7842::autonSides)
 {
-  PIDxBase.moveDistance(15_in);
-  PIDxBase.waitUntilSettled();
+  PIDxBase.moveDistance(42_in);
 
-  PIDxBase.turnAngle(180_deg);
-  PIDxBase.waitUntilSettled();
+  PIDxBase.moveDistance(-42_in);
 
-  PIDxBase.moveDistance(15_in);
-  PIDxBase.waitUntilSettled();
+  PIDxBase.turnAngle(-90_deg);
 }

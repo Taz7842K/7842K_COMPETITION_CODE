@@ -147,6 +147,7 @@ namespace lib7842
 
   void AutonSelector::run()
   {
+    pros::delay(20);
     m_autonPairs[m_currentAutonIndex].autoFunction(m_currentSide);
   }
 

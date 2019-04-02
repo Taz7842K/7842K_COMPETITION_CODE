@@ -1,17 +1,17 @@
 #include "main.h"
 #include "7842K_Main.h"
 
-void liftControlTask(void*)
+double wantedPower = 0;
+double actualPower = 0;
+double powerError = 0;
+
+
+
+void liftControl()
 {
   m_lift1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
   m_lift2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
-  double wantedPower = 0;
-  double actualPower = 0;
-  double powerError = 0;
-
-  while (true)
-  {
     if(HIDMain.get_digital(DIGITAL_L2))                   //Moves lift down
     {
       m_lift1.move(70);
@@ -27,6 +27,6 @@ void liftControlTask(void*)
       m_lift1.moveVelocity(0);
       m_lift2.moveVelocity(0);
     }
+
     pros::delay(20);
   }
-}

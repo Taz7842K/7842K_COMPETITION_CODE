@@ -2,9 +2,9 @@
 #include "main.h"
 
 void catapultControlTask(void*);
-void liftControlTask(void*);
+void liftControl();
 void intakeControlTask(void*);
-void baseControlTask(void*);
+void baseControl();
 
 enum class intakeStates
 {

@@ -40,7 +40,6 @@ void intakeControlTask(void*)
 
       break;
     }
-
-  }
   pros::delay(20);
+  }
 }

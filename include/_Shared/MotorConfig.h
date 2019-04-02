@@ -22,7 +22,7 @@ extern okapi::Motor m_catapult;
 extern okapi::Motor m_lift1;
 extern okapi::Motor m_lift2;
 
-extern okapi::ChassisControllerIntegrated xBase;
+
 extern okapi::ChassisControllerPID PIDxBase;
 
 extern double pGain;

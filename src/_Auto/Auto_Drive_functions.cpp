@@ -65,10 +65,10 @@ void calcArc(double bigCircRadius, double degMove)                              
 
 void slowStop(QLength stopDistance)
 {
-  xBase.setMaxVelocity(75);
-  xBase.moveDistance(stopDistance);
+  PIDxBase.setMaxVelocity(75);
+  PIDxBase.moveDistance(stopDistance);
   pros::delay(100);
-  xBase.setMaxVelocity(maxVelocity);
+  PIDxBase.setMaxVelocity(maxVelocity);
 }
 
 void driveFullPower(float driveDistance)
@@ -97,11 +97,11 @@ void driveFullPowerReverse(float driveDistance)
 
 // void driveDistance(QLength distance)
 // {
-//   std::valarray<std::int32_t> lastEnc = xBase.getSensorVals();
-//   xBase.forward(1);
+//   std::valarray<std::int32_t> lastEnc = PIDxBase.getSensorVals();
+//   PIDxBase.forward(1);
 //
 //   while(true) {
-//     QLength leftDistance = lastEnc[0] - xBase.getSensorVals()[0] *
+//     QLength leftDistance = lastEnc[0] - PIDxBase.getSensorVals()[0] *
 //   }
 //   double wantedTicks = distance.
 // }

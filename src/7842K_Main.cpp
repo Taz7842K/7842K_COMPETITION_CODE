@@ -53,13 +53,13 @@ void autonomous()
 //-------------opControl-----------------------------------------------
 void opcontrol()
 {
-  baseControlTask_t = new pros::Task(baseControlTask);
-  liftControlTask_t = new pros::Task(liftControlTask);
-
   intakeStates intakeState = intakeStates::driver;
 
   while(true)
   {
+    liftControl();
+    baseControl();
+
     if(HIDMain.get_digital(DIGITAL_LEFT))
     {
       autonSelector.run();
