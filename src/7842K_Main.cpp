@@ -29,6 +29,7 @@ void initialize()
 
   intakeControlTask_t = new pros::Task(intakeControlTask);
   catapultControlTask_t = new pros::Task(catapultControlTask);
+  liftControlTask_t = new pros::Task(liftControlTask);
 
   coutTask_t = new pros::Task(coutTask);
 }
@@ -53,11 +54,11 @@ void autonomous()
 //-------------opControl-----------------------------------------------
 void opcontrol()
 {
-  intakeStates intakeState = intakeStates::driver;
+  intakeState = intakeStates::driver;
+  liftState = liftStates::driver;
 
   while(true)
   {
-    liftControl();
     baseControl();
 
     if(HIDMain.get_digital(DIGITAL_LEFT))

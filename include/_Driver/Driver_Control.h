@@ -2,7 +2,7 @@
 #include "main.h"
 
 void catapultControlTask(void*);
-void liftControl();
+void liftControlTask(void*);
 void intakeControlTask(void*);
 void baseControl();
 
@@ -21,16 +21,15 @@ enum class catapultStates
 {
   loading,
   loaded,
-  tare,
+  trigger,
 };
 extern catapultStates catapultState;
 
 
 enum class liftStates
 {
-  up,
-  down,
-  smoothstop,
+  tinyLift,
+  driver,
   stopped,
 };
 extern liftStates liftState;

@@ -21,10 +21,10 @@ okapi::Motor m_catapult(6);
 lib7842::AutonSelector autonSelector(lv_scr_act(), {{"Disabled", autoNothing},{"Skills", autoSkills},{"Front", autoFront},{"Rear", autoRear}, {"Test", autoTest}});
 
 okapi::ChassisControllerPID PIDxBase = ChassisControllerFactory::create(
-  {e_frontLeft, e_rearRight}, {e_frontRight, e_rearLeft},
-  IterativePosPIDController::Gains{0.002, 0, 0.0003}, //distance PID
+  e_frontLeft, e_frontRight, e_rearRight, e_rearLeft,
+  IterativePosPIDController::Gains{0.0027, 0.00001, 0.00025}, //distance PID
   IterativePosPIDController::Gains{0.00, 0, 0.00}, //angle PID
-  IterativePosPIDController::Gains{0.00, 0, 0.000}, //turning PID
+  IterativePosPIDController::Gains{0.0033, 0.00001, 0.00025}, //turning PID
   AbstractMotor::gearset::green,
-  {4_in, 11.25_in}
+  {4_in, 22.3_in}
 );

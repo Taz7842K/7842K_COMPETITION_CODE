@@ -1,25 +1,25 @@
 #include "main.h"
 #include "7842K_Main.h"
 
-int movDel = 80;
+// int movDel = 80;
+//
+//
+// double smallVelocity;
+// double bigCircDistance;
+// double smallCircDistance;
+//
+// int maxVelocity = 200;
 
-
-double smallVelocity;
-double bigCircDistance;
-double smallCircDistance;
-
-int maxVelocity = 200;
-
-void calcArc(double bigCircRadius, double degMove)                                    //bigCircRadius input in inches
-{
-  double bigCircCircumference = ((bigCircRadius * 2) * pi);                           //360 motor encoder units in one rotation
-  double smallCircCircumference = (((bigCircRadius - chassisWidth) * 2)  * pi);
-
-  double bigCircDistance = bigCircCircumference * (degMove/360) /12.57 * 360;
-  double smallCircDistance = smallCircCircumference * (degMove/360) /12.57 * 360;
-
-  double smallVelocity = (smallCircCircumference/bigCircCircumference) * 200;
-}
+// void calcArc(double bigCircRadius, double degMove)                                    //bigCircRadius input in inches
+// {
+//   double bigCircCircumference = ((bigCircRadius * 2) * pi);                           //360 motor encoder units in one rotation
+//   double smallCircCircumference = (((bigCircRadius - chassisWidth) * 2)  * pi);
+//
+//   double bigCircDistance = bigCircCircumference * (degMove/360) /12.57 * 360;
+//   double smallCircDistance = smallCircCircumference * (degMove/360) /12.57 * 360;
+//
+//   double smallVelocity = (smallCircCircumference/bigCircCircumference) * 200;
+// }
 //
 // void driveArcLeft(double bigCircRadius1, double degMove1)
 // {
@@ -63,36 +63,36 @@ void calcArc(double bigCircRadius, double degMove)                              
 //   while(m_frontLeft.getTargetPosition() < m_frontLeft.getPosition() + 180){pros::delay(10);}
 // }
 
-void slowStop(QLength stopDistance)
-{
-  PIDxBase.setMaxVelocity(75);
-  PIDxBase.moveDistance(stopDistance);
-  pros::delay(100);
-  PIDxBase.setMaxVelocity(maxVelocity);
-}
+// void slowStop(QLength stopDistance)
+// {
+//   PIDxBase.setMaxVelocity(75);
+//   PIDxBase.moveDistance(stopDistance);
+//   pros::delay(100);
+//   PIDxBase.setMaxVelocity(maxVelocity);
+// }
 
-void driveFullPower(float driveDistance)
+void strafeRight(float driveDistance)
 {
-  double calcDriveDistance = driveDistance / 12.57 * 360 + 1000;
+  double calcDriveDistance = driveDistance /4 * 360;
 
-  m_frontLeft.moveRelative(calcDriveDistance,200);
-  m_frontRight.moveRelative(calcDriveDistance,200);
-  m_rearLeft.moveRelative(calcDriveDistance,200);
+  m_frontLeft.moveRelative(calcDriveDistance ,200);
+  m_frontRight.moveRelative(calcDriveDistance* -1,200);
+  m_rearLeft.moveRelative(calcDriveDistance* -1,200);
   m_rearRight.moveRelative(calcDriveDistance,200);
 
-  while(m_frontLeft.getTargetPosition() > m_frontLeft.getPosition() + 1000){pros::delay(10);}
+  while(abs(m_frontLeft.getTargetPosition()) > abs(m_frontLeft.getPosition()) + 100){pros::delay(10);}
 }
 
-void driveFullPowerReverse(float driveDistance)
+void strafeLeft(float driveDistance)
 {
-  double calcDriveDistance = driveDistance / 12.57 * 360 + 1000 * -1;
+  double calcDriveDistance = driveDistance /4 * 360;
 
-  m_frontLeft.moveRelative(calcDriveDistance,200);
+  m_frontLeft.moveRelative(calcDriveDistance* -1,200);
   m_frontRight.moveRelative(calcDriveDistance,200);
   m_rearLeft.moveRelative(calcDriveDistance,200);
-  m_rearRight.moveRelative(calcDriveDistance,200);
+  m_rearRight.moveRelative(calcDriveDistance* -1,200);
 
-  while(m_frontLeft.getTargetPosition() < m_frontLeft.getPosition() + 1000){pros::delay(10);}
+  while(abs(m_frontLeft.getTargetPosition()) > abs(m_frontLeft.getPosition()) + 100){pros::delay(10);}
 }
 
 // void driveDistance(QLength distance)

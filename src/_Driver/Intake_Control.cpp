@@ -1,7 +1,7 @@
 #include "main.h"
 #include "7842K_Main.h"
 
-intakeStates intakeState = intakeStates::driver;
+intakeStates intakeState = intakeStates::stopped;
 
 void intakeControlTask(void*)
 {
@@ -14,7 +14,7 @@ void intakeControlTask(void*)
       break;
 
       case intakeStates::forward:
-      m_intake.move(127);
+      m_intake.move(-127);
       break;
 
       case intakeStates::stopped:
