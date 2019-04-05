@@ -47,16 +47,60 @@ void liftControlTask(void*)
 
       case liftStates::tinyLift:
 
-      m_lift1.moveRelative(30,100);
-      m_lift2.moveRelative(30,100);
+      m_lift1.moveAbsolute(70,100);
+      m_lift2.moveAbsolute(70,100);
 
-      pros::delay(500);
+      while(m_lift1.getTargetPosition() > m_lift1.getPosition() + 5){pros::delay(20);};
 
       liftState = liftStates::stopped;
 
       break;
 
-      pros::delay(20);
+      case liftStates::unfold:
+
+      m_lift1.moveAbsolute(760,100);
+      m_lift2.moveAbsolute(760,100);
+
+      while(m_lift1.getTargetPosition() > m_lift1.getPosition() + 10){pros::delay(20);};
+
+      liftState = liftStates::stopped;
+
+      break;
+
+      case liftStates::placeCap:
+
+      m_lift1.moveAbsolute(230,100);
+      m_lift2.moveAbsolute(230,100);
+
+      while(m_lift1.getTargetPosition() < m_lift1.getPosition() - 10){pros::delay(20);};
+
+      liftState = liftStates::stopped;
+
+      break;
+
+      case liftStates::holdCap:
+
+      m_lift1.moveAbsolute(600,100);
+      m_lift2.moveAbsolute(600,100);
+
+      if(m_lift1.getTargetPosition() > m_lift1.getPosition())
+      {
+        while(m_lift1.getTargetPosition() > m_lift1.getPosition() + 10){pros::delay(20);};
+
+        liftState = liftStates::stopped;
+      }
+
+      else if(m_lift1.getTargetPosition() < m_lift1.getPosition())
+      {
+        while(m_lift1.getTargetPosition() < m_lift1.getPosition() - 10){pros::delay(20);};
+
+        liftState = liftStates::stopped;
+      }
+
+      break;
     }
+
+    pros::delay(20);
+
   }
 }

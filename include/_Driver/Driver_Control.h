@@ -31,5 +31,8 @@ enum class liftStates
   tinyLift,
   driver,
   stopped,
+  unfold,
+  placeCap,
+  holdCap,
 };
 extern liftStates liftState;

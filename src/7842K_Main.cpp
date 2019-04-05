@@ -57,6 +57,9 @@ void opcontrol()
   intakeState = intakeStates::driver;
   liftState = liftStates::driver;
 
+  PIDxBase.moveDistance(0.1_in);
+  PIDxBase.stop();
+  
   while(true)
   {
     baseControl();
@@ -75,7 +78,11 @@ void coutTask(void*)
 {
   while(true)
   {
-    std::cout <<"catapult pot =" <<pot_catapult.get()<<std::endl;
+    std::cout <<"catapult pot = " <<pot_catapult.get()<<std::endl;
+    std::cout <<"m_lift1.getPosition = "<< m_lift1.getPosition() <<std::endl;
+    std::cout <<"m_lift2.getPosition = "<< m_lift2.getPosition() <<std::endl;
+
+
     // std::cout <<"light_catapult ="<<light_catapult.get_value_calibrated()<<std::endl;
     // std::cout <<"m_catapult.getCurrentDraw = "<<m_catapult.getCurrentDraw()<<std::endl;
     // std::cout <<"m_catapult Temperature =" <<m_catapult.getTemperature()<<std::endl;

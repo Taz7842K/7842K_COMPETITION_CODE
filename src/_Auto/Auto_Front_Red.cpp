@@ -3,18 +3,15 @@
 
 void autoFrontRed()
 {
-  // m_lift1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-  // m_lift2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-
   liftState = liftStates::tinyLift;
 
   intakeState = intakeStates::forward;
 
-  PIDxBase.moveDistance(42_in);
+  PIDxBase.moveDistance(45_in);
 
   pros::delay(500);
 
-  PIDxBase.moveDistance(-42_in);
+  PIDxBase.moveDistance(-45_in);
 
   intakeState = intakeStates::stopped;
 
@@ -26,17 +23,22 @@ void autoFrontRed()
 
   while(catapultState == catapultStates::trigger){pros::delay(20);};
 
+  PIDxBase.turnAngle(-5_deg);
+
   PIDxBase.moveDistance(-42_in);
 
-  PIDxBase.moveDistance(32_in);
+  PIDxBase.moveDistance(29_in);
 
-  PIDxBase.turnAngle(-90_deg);
+  PIDxBase.turnAngle(-85_deg);
   pros::delay(100);
 
   intakeState = intakeStates::reverse;
 
   PIDxBase.moveDistance(40_in);
 
+  PIDxBase.turnAngle(-60_deg);
+
   intakeState = intakeStates::stopped;
 
+  PIDxBase.moveDistance(25_in);
 }
