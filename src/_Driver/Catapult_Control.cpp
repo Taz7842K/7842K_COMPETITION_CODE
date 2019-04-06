@@ -41,14 +41,14 @@ void catapultControlTask(void*)
 
       case catapultStates::loaded:
 
-      if(HIDMain.get_digital(DIGITAL_R2))
-      {
-        m_catapult.move(-127);
-      }
-
-      else if(pot_catapult.get() < 1500)
+      if(pot_catapult.get() < 1500)
       {
         catapultState = catapultStates::loading;
+      }
+
+      else if(HIDMain.get_digital(DIGITAL_R2))
+      {
+        m_catapult.move(-127);
       }
 
       else

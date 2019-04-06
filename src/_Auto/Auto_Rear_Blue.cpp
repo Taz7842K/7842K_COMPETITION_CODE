@@ -19,7 +19,7 @@ void autoRearBlue()
 
   pros::delay(200);
 
-  PIDxBase.moveDistance(-5_in);
+  PIDxBase.moveDistance(-15_in);
 
   liftState = liftStates::holdCap;
 
