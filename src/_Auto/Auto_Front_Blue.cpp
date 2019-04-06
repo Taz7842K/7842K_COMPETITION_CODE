@@ -23,20 +23,20 @@ void autoFrontBlue()
 
   while(catapultState == catapultStates::trigger){pros::delay(20);};
 
-  PIDxBase.turnAngle(5_deg);
+  PIDxBase.turnAngle(8_deg);
 
   PIDxBase.moveDistance(-42_in);
 
   PIDxBase.moveDistance(29_in);
 
-  PIDxBase.turnAngle(85_deg);
+  PIDxBase.turnAngle(82_deg);
   pros::delay(100);
 
   intakeState = intakeStates::reverse;
 
   PIDxBase.moveDistance(40_in);
 
-  PIDxBase.turnAngle(-60_deg);
+  PIDxBase.turnAngle(-125_deg);
 
   intakeState = intakeStates::stopped;
 

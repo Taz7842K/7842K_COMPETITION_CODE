@@ -36,7 +36,7 @@ void autoFrontRed()
 
   PIDxBase.moveDistance(40_in);
 
-  PIDxBase.turnAngle(-60_deg);
+  PIDxBase.turnAngle(125_deg);
 
   intakeState = intakeStates::stopped;
 
